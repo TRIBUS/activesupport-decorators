@@ -2,8 +2,6 @@ require 'active_support/dependencies'
 
 module ActiveSupport
   module Dependencies
-    alias_method :require_or_load_single, :require_or_load
-
     def require_or_load(file_name, const_path = nil)
       if ActiveSupportDecorators.is_decorator?(file_name)
         # If an attempt is made to load the decorator file (such as eager loading), we
@@ -33,5 +31,7 @@ module ActiveSupport
         end
       end
     end
+
+    alias_method :require_or_load_single, :require_or_load
   end
 end
